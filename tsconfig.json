@@ -1,0 +1,53 @@
+{
+	"compilerOptions": {
+		// Environment setup & latest features
+		"lib": ["ESNext", "DOM"],
+		"target": "ESNext",
+		"module": "Preserve",
+		"moduleDetection": "force",
+		"jsx": "react-jsx",
+		"allowJs": true,
+
+		// Bundler mode
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
+		"noEmit": true,
+
+		// Best practices
+		"strict": true,
+		"skipLibCheck": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"noUncheckedSideEffectImports": true,
+		"noImplicitOverride": true,
+		"erasableSyntaxOnly": true,
+
+		// Some stricter flags (disabled by default)
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noPropertyAccessFromIndexSignature": true,
+
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@components/*": ["./src/views/components/*"],
+			"@config/*": ["./src/config/*"],
+			"@controllers/*": ["./src/controllers/*"],
+			"@errors/*": ["./src/errors/*"],
+			"@handlers/*": ["./src/views/handlers/*"],
+			"@hooks/*": ["./src/views/hooks/*"],
+			"@interfaces/*": ["./src/interfaces/*"],
+			"@middlewares/*": ["./src/middlewares/*"],
+			"@models/*": ["./src/models/*"],
+			"@pages/*": ["./src/views/pages/*"],
+			"@routes/*": ["./src/routes/*"],
+			"@services/*": ["./src/views/services/*"],
+			"@schemas/*": ["./src/schemas/*"],
+			"@stores/*": ["./src/views/stores/*"],
+			"@views/*": ["./src/views/*"]
+		}
+	},
+
+	"exclude": ["dist", "node_modules"]
+}

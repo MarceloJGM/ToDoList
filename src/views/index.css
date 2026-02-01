@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "tailwind-animations";
+
+@theme {
+	--color-primary: #6366f1;
+	--color-primary-light: #818cf8;
+	--color-secondary: #34d399;
+	--color-background: #0f172a;
+	--color-surface: #1e293b;
+	--color-card: #16222a;
+	--color-text-primary: #f1f5f9;
+	--color-text-secondary: #94a3b8;
+	--color-border: #334155;
+	--color-error: #f87171;
+
+	--text-h2-responsive: clamp(1.25rem, 7dvw, 2rem);
+
+	--container-main-responsive: clamp(300px, 100%, 1200px);
+	--container-modal-responsive: clamp(300px, 100%, 500px);
+}
