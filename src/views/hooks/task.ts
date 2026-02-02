@@ -3,19 +3,19 @@ import { fetchAllTasks } from "@services/index.ts";
 import { useEffect, useState } from "react";
 
 export const useTask = () => {
-    const [allTasks, setAllTasks] = useState<ITask[]>([]);
+	const [allTasks, setAllTasks] = useState<ITask[]>([]);
 
-    useEffect(() => {
-        const getAllTasks = async () => {
-            const newAllTasks = await fetchAllTasks();
-            setAllTasks(newAllTasks);
-        };
+	useEffect(() => {
+		const getAllTasks = async () => {
+			const newAllTasks = await fetchAllTasks();
+			setAllTasks(newAllTasks);
+		};
 
-        getAllTasks();
-    }, []);
+		getAllTasks();
+	}, []);
 
-    return {
-        allTasks,
-        setAllTasks,
-    };
+	return {
+		allTasks,
+		setAllTasks,
+	};
 };

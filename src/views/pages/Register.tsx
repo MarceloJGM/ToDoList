@@ -1,26 +1,55 @@
 import { AuthForm } from "@components/index.ts";
-import axios from "axios";
+import {
+	GenericUserCreationError,
+	UserAlreadyExistsError,
+	ValidationError,
+} from "@errors/index.ts";
+import { handleRegisterAuthForm } from "@handlers/index.ts";
+import { useAuthStore } from "@stores/index.ts";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 
 const Register = () => {
-	const handleRegister = (event: React.FormEvent) => {
-		event.preventDefault();
-		const formData = new FormData(event.currentTarget as HTMLFormElement);
-		const username = formData.get("username");
-		const pwd = formData.get("password");
+	const [registerMessage, setRegisterMessage] = useState("");
+	const [registerError, setRegisterError] = useState("");
+	const [_, navigate] = useLocation();
 
-		const url = new URL("/api/users/register", location.origin);
-		axios
-			.post(url.href, { username, pwd })
-			.then((req) => req)
-			.then((data) => console.log(data.data))
-			.catch((err) => console.log(err.response.data.message));
+	const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+	const isLoading = useAuthStore((state) => state.isLoading);
+
+	useEffect(() => {
+		if (isLoggedIn && !isLoading) {
+			navigate("/", { replace: true });
+		}
+	}, [isLoggedIn, isLoading, navigate]);
+
+	const handleRegister = async (event: React.FormEvent) => {
+		try {
+			await handleRegisterAuthForm(event);
+			setRegisterError("");
+			setRegisterMessage("User created!");
+			setTimeout(() => navigate("/login"), 1000);
+		} catch (error) {
+			if (error instanceof ValidationError) {
+				setRegisterError(error.message);
+				return;
+			}
+
+			if (error instanceof UserAlreadyExistsError) {
+				setRegisterError(error.message);
+				return;
+			}
+
+			setRegisterError(new GenericUserCreationError().message);
+		}
 	};
 
 	return (
 		<main className="flex flex-1 p-4">
 			<AuthForm method={handleRegister} title="Register" buttonText="Register">
-				<section className="flex gap-2">
+				{registerError && <p className="text-error">{registerError}</p>}
+				{registerMessage && <p className="text-secondary">{registerMessage}</p>}
+				<section className="flex gap-2 text-text-primary/70">
 					Do you already have an account?
 					<Link
 						className="text-text-primary border-b-2 border-border"
