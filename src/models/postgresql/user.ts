@@ -4,14 +4,12 @@ import {
     InvalidCredentialsError,
     UserAlreadyExistsError,
 } from "@errors/index.ts";
-import type { EnvVariables, IUserModel } from "@interfaces/index.ts";
-import { env, password, SQL } from "bun";
+import type { IUserModel } from "@interfaces/index.ts";
+import { password, sql } from "bun";
 
-const db = new SQL((env as unknown as EnvVariables).MYSQL_URL);
-
-await db`
+await sql`
     CREATE TABLE IF NOT EXISTS users (
-        id CHAR(36) NOT NULL DEFAULT UUID() PRIMARY KEY,
+        id UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
         username VARCHAR(255) NOT NULL,
         password VARCHAR(255) NOT NULL
     );
@@ -26,11 +24,11 @@ export const UserModel: IUserModel = {
 
         try {
             const [user] =
-                await db`SELECT * FROM users WHERE username = ${username};`;
+                await sql`SELECT * FROM users WHERE username = ${username};`;
             if (user) throw new UserAlreadyExistsError();
 
             const [{ id: userId }] =
-                await db`INSERT INTO users ${db(userData)} RETURNING id;`;
+                await sql`INSERT INTO users ${sql(userData)} RETURNING id;`;
 
             return userId;
         } catch (error) {
@@ -45,7 +43,7 @@ export const UserModel: IUserModel = {
     login: async ({ username, pwd }) => {
         try {
             const [user] =
-                await db`SELECT * FROM users WHERE username = ${username};`;
+                await sql`SELECT * FROM users WHERE username = ${username};`;
             if (!user) throw new InvalidCredentialsError();
 
             const isValid = await password.verify(pwd, user.password);
