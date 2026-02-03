@@ -37,12 +37,12 @@ export const Task = ({ task }: { task: ITask }) => {
 			id={id}
 			data-favorite={booleanFavorite}
 			data-completed={booleanCompleted}
-			className={`flex flex-wrap justify-between items-center p-2 gap-4 rounded-md bg-background ${completed ? " line-through opacity-60" : ""}`}
+			className={`flex flex-wrap justify-between items-center p-2 gap-4 rounded-md bg-card hover:bg-card-border transition-all border border-card-border shadow-card ${completed ? "line-through opacity-59" : ""}`}
 		>
 			<section className="flex flex-col min-w-0 wrap-break-word text-wrap">
 				<div>
 					<h3 className="text-text-primary text-h2-responsive">{title}</h3>
-					<span className="text-text-secondary">{description}</span>
+					<span className={`${description ? "text-text-secondary" : "text-text-muted"}`}>{description ? description : "No description"}</span>
 				</div>
 				<div className="flex gap-4 text-text-secondary">
 					<span>{createdDate}</span>

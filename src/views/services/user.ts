@@ -17,7 +17,7 @@ const userApiClient = axios.create({
 userApiClient.interceptors.response.use(
 	(response) => response,
 	(error) => {
-		const { status, data } = error.response;
+		const { status } = error.response;
 		if (status === 401) {
 			throw new InvalidCredentialsError();
 		}

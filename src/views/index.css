@@ -2,19 +2,87 @@
 @import "tailwind-animations";
 
 @theme {
-	--color-primary: #6366f1;
-	--color-primary-light: #818cf8;
-	--color-secondary: #34d399;
-	--color-background: #0f172a;
-	--color-surface: #1e293b;
-	--color-card: #16222a;
-	--color-text-primary: #f1f5f9;
-	--color-text-secondary: #94a3b8;
-	--color-border: #334155;
-	--color-error: #f87171;
+    /* Colores base - Manteniendo tu esquema */
+    --color-primary: #6366f1;
+    --color-primary-light: #818cf8;
+    --color-primary-dark: #4f46e5;
+    --color-primary-50: #eef2ff;
+    --color-primary-100: #e0e7ff;
 
-	--text-h2-responsive: clamp(1.25rem, 7dvw, 2rem);
+    --color-secondary: #34d399;
+    --color-secondary-light: #6ee7b7;
+    --color-secondary-dark: #10b981;
+    --color-secondary-50: #f0fdfa;
 
-	--container-main-responsive: clamp(300px, 100%, 1200px);
-	--container-modal-responsive: clamp(300px, 100%, 500px);
+    /* Colores para componentes específicos */
+    --color-header: #111827;
+    /* Gris azulado muy oscuro para header */
+    --color-header-border: #1f2937;
+    /* Borde sutil para header */
+
+    --color-body: #0f172a;
+    /* Mantienes tu fondo original */
+    --color-body-alt: #1e293b;
+    /* Para variaciones sutiles */
+
+    --color-card: #1e293b;
+    /* Más claro que tu original para mejor contraste */
+    --color-card-hover: #2d3748;
+    /* Estado hover */
+    --color-card-border: #334155;
+    /* Borde para cards */
+
+    --color-surface: #1e293b;
+    /* Mantienes tu surface */
+    --color-surface-light: #2d3748;
+    /* Para elementos elevados */
+
+    /* Colores de texto - Mejorando jerarquía */
+    --color-text-primary: #f8fafc;
+    /* Blanco más suave */
+    --color-text-secondary: #cbd5e1;
+    /* Gris claro */
+    --color-text-tertiary: #94a3b8;
+    /* Gris medio para texto menos importante */
+    --color-text-muted: #64748b;
+    /* Texto deshabilitado/inactivo */
+
+    /* Colores para estados y feedback */
+    --color-success: #10b981;
+    /* Verde para éxito */
+    --color-warning: #f59e0b;
+    /* Ámbar para advertencias */
+    --color-error: #ef4444;
+    /* Rojo más vibrante para errores */
+    --color-info: #3b82f6;
+    /* Azul para información */
+
+    /* Colores para elementos de UI */
+    --color-border: #374151;
+    /* Borde general */
+    --color-border-light: #4b5563;
+    /* Borde más sutil */
+    --color-border-focus: #6366f1;
+    /* Borde en focus */
+
+    /* Colores para botones */
+    --color-btn-primary: #4f46e5;
+    --color-btn-primary-hover: #4338ca;
+    --color-btn-secondary: #374151;
+    --color-btn-secondary-hover: #4b5563;
+
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    --gradient-card: linear-gradient(145deg, #1e293b 0%, #16222a 100%);
+
+    /* Sombras para modo oscuro */
+    --shadow-card:
+        0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    --shadow-header: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+
+    /* Variables responsivas (manteniendo las tuyas) */
+    --text-h1-responsive: clamp(1.5rem, 7dvw, 2.25rem);
+    --text-h2-responsive: clamp(1.25rem, 7dvw, 2rem);
+    --container-main-responsive: clamp(300px, 100%, 1200px);
+    --container-modal-responsive: clamp(300px, 100%, 500px);
 }

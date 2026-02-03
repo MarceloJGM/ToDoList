@@ -42,6 +42,7 @@
 			"@models/*": ["./src/models/*"],
 			"@pages/*": ["./src/views/pages/*"],
 			"@routes/*": ["./src/routes/*"],
+            "@utils/*": ["./src/views/utils/*"],
 			"@services/*": ["./src/views/services/*"],
 			"@schemas/*": ["./src/schemas/*"],
 			"@stores/*": ["./src/views/stores/*"],

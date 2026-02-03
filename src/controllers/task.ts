@@ -79,6 +79,7 @@ export class TaskController {
 				...body,
 				user_id,
 			};
+            console.log(input)
 			const result = validateTask(input);
 
 			if (result.error) {
